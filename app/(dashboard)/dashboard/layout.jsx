@@ -23,7 +23,7 @@ export default async function DashboardLayout({ children }) {
             user={{
               name: user.name,
               image: user.image,
-              email: user.email,
+              cnic: user.cnic,
             }}
           />
         </div>

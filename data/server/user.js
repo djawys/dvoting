@@ -1,7 +1,8 @@
 import { db } from '@/prisma/db';
 
-export const userExist = async (email) => {
-  const user = await db.user.count({ where: { email: email } });
+export const userExist = async (cnic) => {
+  console.log('3', cnic);
+  const user = await db.user.count({ where: { cnic: cnic } });
 
   console.log(user);
   if (user) {

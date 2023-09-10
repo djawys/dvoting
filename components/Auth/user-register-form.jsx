@@ -41,7 +41,7 @@ export function UserRegisterForm({ className, ...props }) {
       });
 
       const signInResult = await signIn('credentials', {
-        email: data.email.toLowerCase(),
+        cnic: data.cnic,
         password: data.password,
         redirect: false,
         callbackUrl: searchParams?.get('from') || '/',
@@ -67,27 +67,25 @@ export function UserRegisterForm({ className, ...props }) {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid gap-2">
           <div className="grid gap-1">
-            <Label className="sr-only" htmlFor="email">
-              Email
+            <Label className="sr-only" htmlFor="cnic">
+              CNIC
             </Label>
             <Input
-              id="email"
-              placeholder="name@example.com"
-              type="email"
+              id="cnic"
+              placeholder="cnic"
+              type="number"
               autoCapitalize="none"
-              autoComplete="email"
+              autoComplete="cnic"
               autoCorrect="off"
               disabled={isLoading}
-              {...register('email')}
+              {...register('cnic')}
             />
-            {errors?.email && (
-              <p className="px-1 text-xs text-red-600">
-                {errors.email.message}
-              </p>
+            {errors?.cnic && (
+              <p className="px-1 text-xs text-red-600">{errors.cnic.message}</p>
             )}
           </div>
           <div className="grid gap-1">
-            <Label className="sr-only" htmlFor="first_name">
+            <Label className="sr-only" htmlFor="name">
               name
             </Label>
             <Input
@@ -100,10 +98,8 @@ export function UserRegisterForm({ className, ...props }) {
               disabled={isLoading}
               {...register('name')}
             />
-            {errors?.first_name && (
-              <p className="px-1 text-xs text-red-600">
-                {errors.first_name.message}
-              </p>
+            {errors?.name && (
+              <p className="px-1 text-xs text-red-600">{errors.name.message}</p>
             )}
           </div>
 
@@ -124,27 +120,6 @@ export function UserRegisterForm({ className, ...props }) {
             {errors?.phone_number && (
               <p className="px-1 text-xs text-red-600">
                 {errors.phone_number.message}
-              </p>
-            )}
-          </div>
-
-          <div className="grid gap-1">
-            <Label className="sr-only" htmlFor="address">
-              address
-            </Label>
-            <Input
-              id="address"
-              placeholder="address"
-              type="text"
-              autoCapitalize="none"
-              autoComplete="address"
-              autoCorrect="off"
-              disabled={isLoading}
-              {...register('address')}
-            />
-            {errors?.address && (
-              <p className="px-1 text-xs text-red-600">
-                {errors.address.message}
               </p>
             )}
           </div>

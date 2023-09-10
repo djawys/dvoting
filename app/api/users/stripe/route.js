@@ -13,7 +13,7 @@ export async function GET(req) {
   try {
     const session = await getServerSession(authOptions);
 
-    if (!session?.user || !session?.user.email) {
+    if (!session?.user || !session?.user.cnic) {
       return new Response(null, { status: 403 });
     }
 
@@ -37,7 +37,7 @@ export async function GET(req) {
       payment_method_types: ['card'],
       mode: 'subscription',
       billing_address_collection: 'auto',
-      customer_email: session.user.email,
+      customer_email: session.user.cnic,
       line_items: [
         {
           price: proPlan.stripePriceId,

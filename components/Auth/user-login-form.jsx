@@ -31,7 +31,7 @@ export function UserLoginForm({ className, ...props }) {
     setIsLoading(true);
 
     const signInResult = await signIn('credentials', {
-      email: data.email.toLowerCase(),
+      cnic: data.cnic,
       password: data.password,
       redirect: false,
       callbackUrl: searchParams?.get('from') || '/',
@@ -56,23 +56,21 @@ export function UserLoginForm({ className, ...props }) {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid gap-2">
           <div className="grid gap-1">
-            <Label className="sr-only" htmlFor="email">
-              Email
+            <Label className="sr-only" htmlFor="cnic">
+              CNIC
             </Label>
             <Input
-              id="email"
-              placeholder="name@example.com"
-              type="email"
+              id="cnic"
+              placeholder="5150312345678"
+              type="text"
               autoCapitalize="none"
-              autoComplete="email"
+              autoComplete="cnic"
               autoCorrect="off"
               disabled={isLoading}
-              {...register('email')}
+              {...register('cnic')}
             />
-            {errors?.email && (
-              <p className="px-1 text-xs text-red-600">
-                {errors.email.message}
-              </p>
+            {errors?.cnic && (
+              <p className="px-1 text-xs text-red-600">{errors.cnic.message}</p>
             )}
           </div>
 
@@ -98,7 +96,7 @@ export function UserLoginForm({ className, ...props }) {
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
-            Sign In with Email
+            Sign In with CNIC
           </button>
         </div>
       </form>

@@ -9,11 +9,10 @@ datasource db {
 
 model User {
   id           String    @id @default(auto()) @map("_id") @db.ObjectId
-  email        String    @unique
+  cnic         String    @unique
   password     String
   name         String?
   phone_number String?
-  address      String?
   created_at   DateTime  @default(now())
   updated_at   DateTime  @updatedAt
   Session      Session[]
