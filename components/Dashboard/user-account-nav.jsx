@@ -17,7 +17,7 @@ export function UserAccountNav({ user }) {
     <DropdownMenu>
       <DropdownMenuTrigger>
         <UserAvatar
-          user={{ name: user.name || null, image: user.image || null }}
+          user={{ name: user.name || null, image: user.picture || null }}
           className="h-8 w-8"
         />
       </DropdownMenuTrigger>
@@ -25,9 +25,9 @@ export function UserAccountNav({ user }) {
         <div className="flex items-center justify-start gap-2 p-2">
           <div className="flex flex-col space-y-1 leading-none">
             {user.name && <p className="font-medium">{user.name}</p>}
-            {user.cnic && (
+            {user.email && (
               <p className="w-[200px] truncate text-sm text-muted-foreground">
-                {user.cnic}
+                {user.email}
               </p>
             )}
           </div>

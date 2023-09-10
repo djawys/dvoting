@@ -37,9 +37,10 @@ export function UserLoginForm({ className, ...props }) {
       callbackUrl: searchParams?.get('from') || '/',
     });
 
-    setIsLoading(false);
+    console.log(signInResult);
 
     if (!signInResult?.ok) {
+      router.refresh();
       return toast({
         title: 'Something went wrong.',
         description: 'Your sign in request failed. Please try again.',
@@ -48,6 +49,7 @@ export function UserLoginForm({ className, ...props }) {
     }
 
     router.push('/dashboard');
+    setIsLoading(false);
     return;
   }
 
@@ -61,7 +63,7 @@ export function UserLoginForm({ className, ...props }) {
             </Label>
             <Input
               id="cnic"
-              placeholder="5150312345678"
+              placeholder="cnic (5150312345678)"
               type="text"
               autoCapitalize="none"
               autoComplete="cnic"

@@ -72,7 +72,7 @@ export function UserRegisterForm({ className, ...props }) {
             </Label>
             <Input
               id="cnic"
-              placeholder="cnic"
+              placeholder="cnic (5150312345678)"
               type="number"
               autoCapitalize="none"
               autoComplete="cnic"
